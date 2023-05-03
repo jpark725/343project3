@@ -61,8 +61,13 @@ const recipeObj2DOMObj = (recipeObj) => {
 const searchNutrition = (ev) => {
   const word = ev.target.textContent;
   console.log("search for", word);
-  return fetch(`https://api.api-ninjas.com/v1/nutrition?query=
-  ${word}`).then((r) =>
+  return fetch(`https://api.api-ninjas.com/v1/nutrition?query=${word}`, {
+    method: 'GET',
+    headers: {
+        "X-Api-Key": "dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit",
+        'Content-Type': 'application/json'
+    }
+  }).then((r) =>
     r.json()
   ).then((nutritionResultsObj)=> {
     // console.log(bookResultsObj.hasOwnProperty('results'))
