@@ -30,7 +30,8 @@ const getRecipe = (word) => {
   return fetch({
     method: 'GET',
     url: `https://api.api-ninjas.com/v1/recipe?query=${word}`,
-    headers: {'X-Auth-Token': 'dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit'}
+    headers: {'X-Auth-Token': 'dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit'},
+    contentType: 'application/json'
   }).then((resp) => resp.json())
     .then(function(data) {
       console.log(data);
