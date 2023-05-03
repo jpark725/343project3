@@ -27,7 +27,7 @@ searchForm.onsubmit = (ev) => {
 
 const getRecipe = (word) => {
   console.log("attempting to get recipe for", word);
-  return fetch('https://api.api-ninjas.com/v1/recipe?query=friend%20chicken', {
+  return fetch(`https://api.api-ninjas.com/v1/recipe?query=${word}`, {
     method: 'GET',
     headers: {
         "X-Api-Key": "dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit",
