@@ -22,18 +22,17 @@ searchForm.onsubmit = (ev) => {
   });
 };
 
-// given a word (string), search for rhymes
-// https://rhymebrain.com/api.html#rhyme
-//  https://rhymebrain.com/talk?function=getRhymes&word=hello
+// given a word (string), search for recipes
+// https://api.api-ninjas.com/v1/recipe?query=
 
-const getRhymes = (word) => {
-  console.log("attempting to get rhymes for", word);
+const getRecipe = (word) => {
+  console.log("attempting to get recipe for", word);
   return fetch(
-    `https://rhymebrain.com/talk?function=getRhymes&word=${word}`
+    `https://api.api-ninjas.com/v1/recipe?query=${word}`
   ).then((resp) => resp.json());
 };
 
-const rhymObj2DOMObj = (rhymeObj) => {
+const recipeObj2DOMObj = (recipeObj) => {
   //this should be an array where each element has a structure like
   //
   // "word": "no",
@@ -41,27 +40,29 @@ const rhymObj2DOMObj = (rhymeObj) => {
   // "score": "300",
   // "flags": "bc",
   // "syllables": "1"
-  const rhymeListItem = document.createElement("li");
-  const rhymeButton = document.createElement("button");
-  rhymeButton.classList.add('btn')
-  rhymeButton.classList.add('btn-info')
-  rhymeButton.textContent = rhymeObj.word;
-  rhymeButton.onclick = searchForBook;
-  rhymeListItem.appendChild(rhymeButton);
-  return rhymeListItem;
+  const recipeListItem = document.createElement("li");
+  const recipeButton = document.createElement("button");
+  recipeButton.classList.add('btn')
+  recipeButton.classList.add('btn-info')
+  recipeButton.textContent = recipeObj.word;
+  recipeButton.onclick = searchForBook;
+  recipeListItem.appendChild(recipeButton);
+  return recipeListItem;
 };
 
-const searchForBook = (ev) => {
+//https://api-ninjas.com/api/nutrition
+const searchNutrition = (ev) => {
   const word = ev.target.textContent;
   console.log("search for", word);
-  return fetch(`https://gutendex.com/books/?search=${word}`).then((r) =>
+  return fetch(`https://api.api-ninjas.com/v1/nutrition?query=
+  ${word}`).then((r) =>
     r.json()
-  ).then((bookResultsObj)=> {
+  ).then((nutritionResultsObj)=> {
     // console.log(bookResultsObj.hasOwnProperty('results'))
-    const bookCardsArray = bookResultsObj.results.map(bookObj2DOMObj)
-    console.log("bookCardsArray", bookCardsArray);
-    const bookResultsElem = document.getElementById("book-results");
-    bookCardsArray.forEach(book=>bookResultsElem.appendChild(book))
+    const nutritionArray = nutritionResultsObj.results.map(nutritionObj2DOMObj)
+    console.log("nutritionArray", nutritionArray);
+    const nutritonResultsElem = document.getElementById("nutrition-results");
+    nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
   })
 };
 
