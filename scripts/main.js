@@ -73,41 +73,41 @@ const searchNutrition = (ev) => {
   })
 };
 
-const bookObj2DOMObj = (bookObj) => {
+const nutritionObj2DOMObj = (nutritionObj) => {
   // {"id":70252,"title":"Threads gathered up : $b A sequel to \"Virgie's Inheritance\"","authors":[{"name":"Sheldon, Georgie, Mrs.","birth_year":1843,"death_year":1926}],"translators":[],"subjects":["American fiction -- 19th century"],"bookshelves":[],"languages":["en"],"copyright":false,"media_type":"Text","formats":{"image/jpeg":"https://www.gutenberg.org/cache/epub/70252/pg70252.cover.medium.jpg","application/rdf+xml":"https://www.gutenberg.org/ebooks/70252.rdf","text/plain":"https://www.gutenberg.org/ebooks/70252.txt.utf-8","application/x-mobipocket-ebook":"https://www.gutenberg.org/ebooks/70252.kf8.images","application/epub+zip":"https://www.gutenberg.org/ebooks/70252.epub3.images","text/html":"https://www.gutenberg.org/ebooks/70252.html.images","application/octet-stream":"https://www.gutenberg.org/files/70252/70252-0.zip","text/plain; charset=us-ascii":"https://www.gutenberg.org/files/70252/70252-0.txt"},"download_count":745},
 
   // make a dom element
   // add bookObj.title to the element
   // return element
 
-  const bookCardDiv = document.createElement("div");
-  bookCardDiv.classList.add("card");
+  const nutritionDiv = document.createElement("div");
+  nutritionDiv.classList.add("card");
 
-  const bookCardBody = document.createElement("div");
-  bookCardBody.classList.add("card-body");
+  const nutritionBody = document.createElement("div");
+  nutritionBody.classList.add("card-body");
 
   const titleElem = document.createElement("h5");
-  titleElem.textContent = bookObj.title;
-  bookCardBody.appendChild(titleElem);
+  titleElem.textContent = nutritionObj.title;
+  nutritionBody.appendChild(titleElem);
   const cardText = document.createElement("p");
   cardText.textContent =
     "Some quick example text to build on the card title and make up the bulk of the card's content.";
-  bookCardBody.appendChild(cardText);
-  if (bookObj?.formats?.["image/jpeg"]) {
-    const bookCardImg = document.createElement("img");
-    bookCardImg.classList.add("card-img-top");
-    bookCardImg.src = bookObj?.formats?.["image/jpeg"];
-    bookCardBody.appendChild(bookCardImg)
+  nutritionBody.appendChild(cardText);
+  if (nutritionObj?.formats?.["image/jpeg"]) {
+    const nutritionImg = document.createElement("img");
+    nutritionImg.classList.add("card-img-top");
+    nutritionImg.src = nutritionObj?.formats?.["image/jpeg"];
+    nutritionBody.appendChild(nutritionImg)
   }
-  if (bookObj?.formats?.["text/plain"]) {
-    const bookTextLink = document.createElement("a");
-    bookTextLink.href = bookObj?.formats?.["text/plain"];
-    bookTextLink.classList.add("btn");
-    bookTextLink.classList.add("btn-primary");
-    bookTextLink.textContent = "Read It!";
-    bookCardBody.appendChild(bookTextLink);
+  if (nutritionObj?.formats?.["text/plain"]) {
+    const nutritionLink = document.createElement("a");
+    nutritionLink.href = bookObj?.formats?.["text/plain"];
+    nutritionLink.classList.add("btn");
+    nutritionLink.classList.add("btn-primary");
+    nutritionLink.textContent = "Read It!";
+    nutritionBody.appendChild(nutritionLink);
   }
-  bookCardDiv.appendChild(bookCardBody)
-  return bookCardDiv
+  nutritionDiv.appendChild(nutritionBody)
+  return nutritionDiv
   
 };
