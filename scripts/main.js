@@ -11,7 +11,7 @@ searchForm.onsubmit = (ev) => {
   const queryText = formData.get("query");
   console.log("queryText", queryText);
 
-  const rhymeResultsPromise = getRhymes(queryText);
+  const rhymeResultsPromise = getRecipe(queryText);
   rhymeResultsPromise.then((rhymeResults) => {
     const rhymeListItemsArray = rhymeResults.map(rhymObj2DOMObj);
     console.log("rhymeListItemsArray", rhymeListItemsArray);
