@@ -31,7 +31,10 @@ const getRecipe = (word) => {
     method: 'GET',
     url: `https://api.api-ninjas.com/v1/recipe?query=${word}`,
     headers: {'X-Api-Key': 'dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit'}
-  }).then((resp) => resp.json());
+  }).then((resp) => resp.json())
+    .then(function(data) {
+      console.log(data);
+    })
 };
 
 const recipeObj2DOMObj = (recipeObj) => {
