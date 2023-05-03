@@ -13,11 +13,11 @@ searchForm.onsubmit = (ev) => {
 
   const recipeResultsPromise = getRecipe(queryText);
   recipeResultsPromise.then((recipeResults) => {
-    const rhymeListItemsArray = recipeResults.map(recipeObj2DOMObj);
-    console.log("rhymeListItemsArray", rhymeListItemsArray);
-    const rhymeResultsUL = document.getElementById("rhyme-results");
-    rhymeListItemsArray.forEach((rhymeLi) => {
-      rhymeResultsUL.appendChild(rhymeLi);
+    const recipeListItemsArray = recipeResults.map(recipeObj2DOMObj);
+    console.log("recipeListItemsArray", recipeListItemsArray);
+    const recipeResultsUL = document.getElementById("recipe-results");
+    recipeListItemsArray.forEach((recipeLi) => {
+      recipeResultsUL.appendChild(recipeLi);
     });
   });
 };
@@ -73,41 +73,41 @@ const searchNutrition = (ev) => {
   })
 };
 
-const nutritionObj2DOMObj = (nutritionObj) => {
+const bookObj2DOMObj = (bookObj) => {
   // {"id":70252,"title":"Threads gathered up : $b A sequel to \"Virgie's Inheritance\"","authors":[{"name":"Sheldon, Georgie, Mrs.","birth_year":1843,"death_year":1926}],"translators":[],"subjects":["American fiction -- 19th century"],"bookshelves":[],"languages":["en"],"copyright":false,"media_type":"Text","formats":{"image/jpeg":"https://www.gutenberg.org/cache/epub/70252/pg70252.cover.medium.jpg","application/rdf+xml":"https://www.gutenberg.org/ebooks/70252.rdf","text/plain":"https://www.gutenberg.org/ebooks/70252.txt.utf-8","application/x-mobipocket-ebook":"https://www.gutenberg.org/ebooks/70252.kf8.images","application/epub+zip":"https://www.gutenberg.org/ebooks/70252.epub3.images","text/html":"https://www.gutenberg.org/ebooks/70252.html.images","application/octet-stream":"https://www.gutenberg.org/files/70252/70252-0.zip","text/plain; charset=us-ascii":"https://www.gutenberg.org/files/70252/70252-0.txt"},"download_count":745},
 
   // make a dom element
   // add bookObj.title to the element
   // return element
 
-  const nutritionDiv = document.createElement("div");
-  nutritionDiv.classList.add("card");
+  const bookCardDiv = document.createElement("div");
+  bookCardDiv.classList.add("card");
 
-  const nutritionBody = document.createElement("div");
-  nutritionBody.classList.add("card-body");
+  const bookCardBody = document.createElement("div");
+  bookCardBody.classList.add("card-body");
 
   const titleElem = document.createElement("h5");
-  titleElem.textContent = nutritionObj.title;
-  nutritionBody.appendChild(titleElem);
+  titleElem.textContent = bookObj.title;
+  bookCardBody.appendChild(titleElem);
   const cardText = document.createElement("p");
   cardText.textContent =
     "Some quick example text to build on the card title and make up the bulk of the card's content.";
-  nutritionBody.appendChild(cardText);
-  if (nutritionObj?.formats?.["image/jpeg"]) {
-    const nutritionImg = document.createElement("img");
-    nutritionImg.classList.add("card-img-top");
-    nutritionImg.src = nutritionObj?.formats?.["image/jpeg"];
-    nutritionBody.appendChild(nutritionImg)
+  bookCardBody.appendChild(cardText);
+  if (bookObj?.formats?.["image/jpeg"]) {
+    const bookCardImg = document.createElement("img");
+    bookCardImg.classList.add("card-img-top");
+    bookCardImg.src = bookObj?.formats?.["image/jpeg"];
+    bookCardBody.appendChild(bookCardImg)
   }
-  if (nutritionObj?.formats?.["text/plain"]) {
-    const nutritionLink = document.createElement("a");
-    nutritionLink.href = bookObj?.formats?.["text/plain"];
-    nutritionLink.classList.add("btn");
-    nutritionLink.classList.add("btn-primary");
-    nutritionLink.textContent = "Read It!";
-    nutritionBody.appendChild(nutritionLink);
+  if (bookObj?.formats?.["text/plain"]) {
+    const bookTextLink = document.createElement("a");
+    bookTextLink.href = bookObj?.formats?.["text/plain"];
+    bookTextLink.classList.add("btn");
+    bookTextLink.classList.add("btn-primary");
+    bookTextLink.textContent = "Read It!";
+    bookCardBody.appendChild(bookTextLink);
   }
-  nutritionDiv.appendChild(nutritionBody)
-  return nutritionDiv
+  bookCardDiv.appendChild(bookCardBody)
+  return bookCardDiv
   
 };
