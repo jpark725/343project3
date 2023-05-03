@@ -13,7 +13,7 @@ searchForm.onsubmit = (ev) => {
 
   const recipeResultsPromise = getRecipe(queryText);
   recipeResultsPromise.then((recipeResults) => {
-    const rhymeListItemsArray = recipeResults.map(rhymObj2DOMObj);
+    const rhymeListItemsArray = recipeResults.map(recipeObj2DOMObj);
     console.log("rhymeListItemsArray", rhymeListItemsArray);
     const rhymeResultsUL = document.getElementById("rhyme-results");
     rhymeListItemsArray.forEach((rhymeLi) => {
