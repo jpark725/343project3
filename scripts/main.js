@@ -27,11 +27,12 @@ searchForm.onsubmit = (ev) => {
 
 const getRecipe = (word) => {
   console.log("attempting to get recipe for", word);
-  return fetch({
+  return fetch('https://api.api-ninjas.com/v1/recipe?query=friend%20chicken', {
     method: 'GET',
-    url: `https://api.api-ninjas.com/v1/recipe?query=${word}`,
-    headers: {'X-Auth-Token': 'dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit'},
-    contentType: 'application/json'
+    headers: {
+        "X-Api-Key": "dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit",
+        'Content-Type': 'application/json'
+    }
   }).then((resp) => resp.json())
     .then(function(data) {
       console.log(data);
