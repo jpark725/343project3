@@ -52,7 +52,7 @@ const recipeObj2DOMObj = (recipeObj) => {
   recipeButton.classList.add('btn')
   recipeButton.classList.add('btn-info')
   recipeButton.textContent = recipeObj.word;
-  recipeButton.onclick = searchNutrition;
+  //recipeButton.onclick = searchNutrition;
   recipeListItem.appendChild(recipeButton);
   return recipeListItem;
 };
