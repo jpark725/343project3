@@ -27,9 +27,11 @@ searchForm.onsubmit = (ev) => {
 
 const getRecipe = (word) => {
   console.log("attempting to get recipe for", word);
-  return fetch(
-    `https://api.api-ninjas.com/v1/recipe?query=${word}`
-  ).then((resp) => resp.json());
+  return fetch({
+    method: 'GET',
+    url: `https://api.api-ninjas.com/v1/recipe?query=${word}`,
+    headers: {'X-Api-Key': 'dvZ11IGyVBnq5fWovX768Q==2T9j5boIqQXzPNit'}
+  }).then((resp) => resp.json());
 };
 
 const recipeObj2DOMObj = (recipeObj) => {
