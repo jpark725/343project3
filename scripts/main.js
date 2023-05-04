@@ -19,6 +19,7 @@ searchForm.onsubmit = (ev) => {
     recipeListItemsArray.forEach((recipeLi) => {
       recipeResultsUL.appendChild(recipeLi);
     });
+
   
     //const IngredientsResultsPromise = getIngredients(queryText)
 
@@ -81,7 +82,15 @@ const searchNutrition = (ev) => {
     //console.log(nutritionArray)
     //console.log("nutritionArray", nutritionArray);
     const nutritonResultsElem = document.getElementById("nutrition-results");
+    nutritionResultsJSON=  JSON.stringify(nutritionResultsObj);
+    const obj = JSON.parse(nutritionResultsJSON);
+    const contents = [];
+    for (let key in obj) {
+      contents.push(obj[key]);
+    }
+    document.getElementById("output").value = nutritionResultsJSON;
     
+
     //const ingredientitem = document.createElement("li");
     //const ingredientname =document.createElement("li")
     //ingredientname.textContent = nutritionArray.name;
@@ -108,12 +117,8 @@ const getIngredient = (recipeObj) => {
   return ingredientList
 };
 """
+*/
 
 const nutritionObj2DOMObj = (nutritionObj) => {
-  const nutritionListItem = document.createElement("li");
-  const nutritionItem = document.createElement("li");
-  nutritionItem.textContent = nutritionObj.name;
-  nutritionListItem.appendChild(nutritionItem);
-  return nutritionListItem;
+
 };
-*/
