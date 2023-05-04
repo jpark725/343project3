@@ -19,6 +19,8 @@ searchForm.onsubmit = (ev) => {
     recipeListItemsArray.forEach((recipeLi) => {
       recipeResultsUL.appendChild(recipeLi);
     });
+  
+    //const IngredientsResultsPromise = getIngredients(queryText)
 
   });
 };
@@ -79,14 +81,15 @@ const searchNutrition = (ev) => {
     //console.log(nutritionArray)
     //console.log("nutritionArray", nutritionArray);
     const nutritonResultsElem = document.getElementById("nutrition-results");
-    const ingredientitem = document.createElement("li");
-    const ingredientname =document.createElement("li")
-    ingredientname.textContent = nutritionArray.name;
-    ingredientitem.appendChild(ingredientname);
-    console.log(ingredientname)
-    console.log(nutritionArray.name)
-    const recipeResultsUL = document.getElementById("recipe-results");
-    console.log(recipeResultsUL)
+    
+    //const ingredientitem = document.createElement("li");
+    //const ingredientname =document.createElement("li")
+    //ingredientname.textContent = nutritionArray.name;
+    //ingredientitem.appendChild(ingredientname);
+    //console.log(ingredientname)
+    //console.log(nutritionArray.name)
+    //const recipeResultsUL = document.getElementById("recipe-results");
+    //console.log(recipeResultsUL)
 
     //nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
     //getNutritionDropdown(nutritionArray)
@@ -94,42 +97,23 @@ const searchNutrition = (ev) => {
   })
 };
 
-
-const bookObj2DOMObj = (bookObj) => {
-  // {"id":70252,"title":"Threads gathered up : $b A sequel to \"Virgie's Inheritance\"","authors":[{"name":"Sheldon, Georgie, Mrs.","birth_year":1843,"death_year":1926}],"translators":[],"subjects":["American fiction -- 19th century"],"bookshelves":[],"languages":["en"],"copyright":false,"media_type":"Text","formats":{"image/jpeg":"https://www.gutenberg.org/cache/epub/70252/pg70252.cover.medium.jpg","application/rdf+xml":"https://www.gutenberg.org/ebooks/70252.rdf","text/plain":"https://www.gutenberg.org/ebooks/70252.txt.utf-8","application/x-mobipocket-ebook":"https://www.gutenberg.org/ebooks/70252.kf8.images","application/epub+zip":"https://www.gutenberg.org/ebooks/70252.epub3.images","text/html":"https://www.gutenberg.org/ebooks/70252.html.images","application/octet-stream":"https://www.gutenberg.org/files/70252/70252-0.zip","text/plain; charset=us-ascii":"https://www.gutenberg.org/files/70252/70252-0.txt"},"download_count":745},
-
-  // make a dom element
-  // add bookObj.title to the element
-  // return element
-
-  const bookCardDiv = document.createElement("div");
-  bookCardDiv.classList.add("card");
-
-  const bookCardBody = document.createElement("div");
-  bookCardBody.classList.add("card-body");
-
-  const titleElem = document.createElement("h5");
-  titleElem.textContent = bookObj.title;
-  bookCardBody.appendChild(titleElem);
-  const cardText = document.createElement("p");
-  cardText.textContent =
-    "Some quick example text to build on the card title and make up the bulk of the card's content.";
-  bookCardBody.appendChild(cardText);
-  if (bookObj?.formats?.["image/jpeg"]) {
-    const bookCardImg = document.createElement("img");
-    bookCardImg.classList.add("card-img-top");
-    bookCardImg.src = bookObj?.formats?.["image/jpeg"];
-    bookCardBody.appendChild(bookCardImg)
-  }
-  if (bookObj?.formats?.["text/plain"]) {
-    const bookTextLink = document.createElement("a");
-    bookTextLink.href = bookObj?.formats?.["text/plain"];
-    bookTextLink.classList.add("btn");
-    bookTextLink.classList.add("btn-primary");
-    bookTextLink.textContent = "Read It!";
-    bookCardBody.appendChild(bookTextLink);
-  }
-  bookCardDiv.appendChild(bookCardBody)
-  return bookCardDiv
-  
+/*
+const getIngredient = (recipeObj) => {
+  const ingredientList = document.createElement('ul');
+  recipe.ingredients.forEach(ingredient => {
+    const ingredient = document.createElement('li');
+    ingredient.textContent = recipeObj.ingredient;
+    ingredientList.appendChild(ingredient)
+  });
+  return ingredientList
 };
+"""
+
+const nutritionObj2DOMObj = (nutritionObj) => {
+  const nutritionListItem = document.createElement("li");
+  const nutritionItem = document.createElement("li");
+  nutritionItem.textContent = nutritionObj.name;
+  nutritionListItem.appendChild(nutritionItem);
+  return nutritionListItem;
+};
+*/
