@@ -53,9 +53,22 @@ const recipeObj2DOMObj = (recipeObj) => {
   recipeButton.classList.add('btn')
   recipeButton.classList.add('btn-info')
   recipeButton.textContent = recipeObj.title;
+  //recipeButton.onclick = getIngredientDropdown(recipeObj);
   recipeButton.onclick = searchNutrition;
   recipeListItem.appendChild(recipeButton);
   return recipeListItem;
+};
+
+const getIngredientDropdown = (recipeObj) => {
+  const ingredient = document.createElement("ul");
+  const listItem = document.createElement("li")
+  nutritionArray.forEach(elm=>recipeObj.appendChild(elm))
+  document.body.appendChild(ul);
+};
+
+const getNutritionDropdown = (nutritionArray) => {
+  const dropdown = document.createElement("ul");
+  nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
 };
 
 //https://api-ninjas.com/api/nutrition
@@ -72,12 +85,16 @@ const searchNutrition = (ev) => {
     r.json()
   ).then((nutritionResultsObj)=> {
     // console.log(bookResultsObj.hasOwnProperty('results'))
-    const nutritionArray = nutritionResultsObj.results.map(nutritionObj2DOMObj)
-    console.log("nutritionArray", nutritionArray);
+    // const nutritionArray = nutritionResultsObj.map(nutritionObj2DOMObj)
+    const nutritionArray = nutritionResultsObj
+    //console.log(nutritionArray)
+    //console.log("nutritionArray", nutritionArray);
     const nutritonResultsElem = document.getElementById("nutrition-results");
     nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
+    //getNutritionDropdown(nutritionArray)
   })
 };
+
 
 const bookObj2DOMObj = (bookObj) => {
   // {"id":70252,"title":"Threads gathered up : $b A sequel to \"Virgie's Inheritance\"","authors":[{"name":"Sheldon, Georgie, Mrs.","birth_year":1843,"death_year":1926}],"translators":[],"subjects":["American fiction -- 19th century"],"bookshelves":[],"languages":["en"],"copyright":false,"media_type":"Text","formats":{"image/jpeg":"https://www.gutenberg.org/cache/epub/70252/pg70252.cover.medium.jpg","application/rdf+xml":"https://www.gutenberg.org/ebooks/70252.rdf","text/plain":"https://www.gutenberg.org/ebooks/70252.txt.utf-8","application/x-mobipocket-ebook":"https://www.gutenberg.org/ebooks/70252.kf8.images","application/epub+zip":"https://www.gutenberg.org/ebooks/70252.epub3.images","text/html":"https://www.gutenberg.org/ebooks/70252.html.images","application/octet-stream":"https://www.gutenberg.org/files/70252/70252-0.zip","text/plain; charset=us-ascii":"https://www.gutenberg.org/files/70252/70252-0.txt"},"download_count":745},
