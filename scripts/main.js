@@ -19,8 +19,10 @@ searchForm.onsubmit = (ev) => {
     recipeListItemsArray.forEach((recipeLi) => {
       recipeResultsUL.appendChild(recipeLi);
     });
+
   });
 };
+
 
 // given a word (string), search for recipes
 // https://api.api-ninjas.com/v1/recipe?query=
@@ -41,7 +43,7 @@ const getRecipe = (word) => {
 };
 
 const recipeObj2DOMObj = (recipeObj) => {
-  //this should be an array where each element has a structure like
+   //this should be an array where each element has a structure like
   //
   // "word": "no",
   // "frequency": 28,
@@ -59,18 +61,6 @@ const recipeObj2DOMObj = (recipeObj) => {
   return recipeListItem;
 };
 
-const getIngredientDropdown = (recipeObj) => {
-  const ingredient = document.createElement("ul");
-  const listItem = document.createElement("li")
-  nutritionArray.forEach(elm=>recipeObj.appendChild(elm))
-  document.body.appendChild(ul);
-};
-
-const getNutritionDropdown = (nutritionArray) => {
-  const dropdown = document.createElement("ul");
-  nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
-};
-
 //https://api-ninjas.com/api/nutrition
 const searchNutrition = (ev) => {
   const word = ev.target.textContent;
@@ -85,13 +75,22 @@ const searchNutrition = (ev) => {
     r.json()
   ).then((nutritionResultsObj)=> {
     // console.log(bookResultsObj.hasOwnProperty('results'))
-    // const nutritionArray = nutritionResultsObj.map(nutritionObj2DOMObj)
-    const nutritionArray = nutritionResultsObj
+    const nutritionArray = nutritionResultsObj.map(console.log);
     //console.log(nutritionArray)
     //console.log("nutritionArray", nutritionArray);
     const nutritonResultsElem = document.getElementById("nutrition-results");
-    nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
+    const ingredientitem = document.createElement("li");
+    const ingredientname =document.createElement("li")
+    ingredientname.textContent = nutritionArray.name;
+    ingredientitem.appendChild(ingredientname);
+    console.log(ingredientname)
+    console.log(nutritionArray.name)
+    const recipeResultsUL = document.getElementById("recipe-results");
+    console.log(recipeResultsUL)
+
+    //nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
     //getNutritionDropdown(nutritionArray)
+
   })
 };
 
