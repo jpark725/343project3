@@ -30,6 +30,10 @@ searchForm.onsubmit = (ev) => {
 // given a word (string), search for recipes
 // https://api.api-ninjas.com/v1/recipe?query=
 
+const searchRecipe = (word) => {
+  console.log(word)
+}
+
 const getRecipe = (word) => {
   console.log("attempting to get recipe for", word);
   return fetch(`https://api.api-ninjas.com/v1/recipe?query=${word}`, {
@@ -41,13 +45,6 @@ const getRecipe = (word) => {
   }).then((resp) => resp.json())
     .then(function(data) {
       console.log(data);
-      let str = "";
-      const recipeResultsUL = document.getElementById("recipe-results");
-        for (const [key, value] of Object.entries(recipeResultsUL)) {
-          str += `${key}: ${value}\n`;
-        }
-    
-      document.getElementById("output2").value = str;
       return data
     })
 
@@ -101,10 +98,12 @@ const searchNutrition = (ev) => {
           str += `${key}: ${value}\n`;
         }
     console.log(obj)
+
+    searchRecipe
     
     document.getElementById("output").value = str;
 
-    
+
 
     //const ingredientitem = document.createElement("li");
     //const ingredientname =document.createElement("li")
