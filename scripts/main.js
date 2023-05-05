@@ -41,8 +41,17 @@ const getRecipe = (word) => {
   }).then((resp) => resp.json())
     .then(function(data) {
       console.log(data);
+      let str = "";
+      const recipeResultsUL = document.getElementById("recipe-results");
+        for (const [key, value] of Object.entries(recipeResultsUL)) {
+          str += `${key}: ${value}\n`;
+        }
+    
+      document.getElementById("output2").value = str;
       return data
     })
+
+
 };
 
 const recipeObj2DOMObj = (recipeObj) => {
@@ -59,11 +68,13 @@ const recipeObj2DOMObj = (recipeObj) => {
   recipeButton.classList.add('btn-info')
   recipeButton.textContent = recipeObj.title;
   //recipeButton.onclick = getIngredientDropdown(recipeObj);
+
   recipeButton.onclick = document.getElementById("output").value = "";
   recipeButton.onclick = searchNutrition;
   recipeListItem.appendChild(recipeButton);
   return recipeListItem;
 };
+
 
 //https://api-ninjas.com/api/nutrition
 const searchNutrition = (ev) => {
@@ -89,6 +100,7 @@ const searchNutrition = (ev) => {
         for (const [key, value] of Object.entries(obj[0])) {
           str += `${key}: ${value}\n`;
         }
+    console.log(obj)
     
     document.getElementById("output").value = str;
 
@@ -100,7 +112,6 @@ const searchNutrition = (ev) => {
     //ingredientitem.appendChild(ingredientname);
     //console.log(ingredientname)
     //console.log(nutritionArray.name)
-    //const recipeResultsUL = document.getElementById("recipe-results");
     //console.log(recipeResultsUL)
 
     //nutritionArray.forEach(elm=>nutritonResultsElem.appendChild(elm))
