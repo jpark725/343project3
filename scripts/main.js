@@ -84,11 +84,13 @@ const searchNutrition = (ev) => {
     const nutritonResultsElem = document.getElementById("nutrition-results");
     nutritionResultsJSON=  JSON.stringify(nutritionResultsObj);
     const obj = JSON.parse(nutritionResultsJSON);
-    const contents = [];
-    for (let key in obj) {
-      contents.push(obj[key]);
-    }
-    document.getElementById("output").value = nutritionResultsJSON;
+    let str = "";
+        for (const [key, value] of Object.entries(obj[0])) {
+          str += `${key}: ${value}\n`;
+        }
+    
+    document.getElementById("output").value = str;
+
     
 
     //const ingredientitem = document.createElement("li");
