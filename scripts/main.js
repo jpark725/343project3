@@ -17,6 +17,7 @@ searchForm.onsubmit = (ev) => {
     console.log("recipeListItemsArray", recipeListItemsArray);
     const recipeResultsUL = document.getElementById("recipe-results");
     recipeListItemsArray.forEach((recipeLi) => {
+      recipeLi.append(id = "0");
       recipeResultsUL.appendChild(recipeLi);
     });
 
