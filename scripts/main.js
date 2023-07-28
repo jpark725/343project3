@@ -64,7 +64,7 @@ const recipeObj2DOMObj = (recipeObj) => {
   recipeButton.classList.add('btn')
   recipeButton.classList.add('btn-info')
   initial = 0;
-  recipeButton.id = "chooseMe" + initial;
+  recipeButton.id = "chooseMe" + str(initial);
   initial += 1;
   //recipeButton.id = "chooseMe";
   recipeButton.textContent = recipeObj.title;
