@@ -63,7 +63,11 @@ const recipeObj2DOMObj = (recipeObj) => {
   const recipeButton = document.createElement("button");
   recipeButton.classList.add('btn')
   recipeButton.classList.add('btn-info')
-  recipeButton.id = "chooseMe";
+  initial = 0;
+  if (initial == 0) {
+    recipeButton.id = "chooseMe";
+  }
+  //recipeButton.id = "chooseMe";
   recipeButton.textContent = recipeObj.title;
   //recipeButton.onclick = getIngredientDropdown(recipeObj);
 
